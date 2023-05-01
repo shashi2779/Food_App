@@ -32,19 +32,37 @@ function AuthProvider({ children }) {
     }
    
     async function login(email, password) {
+        // return status
+        let flag = true
         try {
             setLoading(true);
             const res = await axios.post("/api/v1/auth/login", {
                 email: email,
                 password: password
             });
+           
+            // checks
+            if(res.status == 404){
+                alert("Password or Email may be wrong")
+                flag = false
+            }else if(res.status == 400){
+                alert("user not found kindly login")
+                flag = false
+            }else if(res.status == 500){
+                alert("Internal server error")
+                flag = false
+            }else{
+                userSet(res.data.user);
+            }
             setLoading(false);
-            // console.log("40",res.data);
-            userSet(res.data.user);
+           // console.log("40",res.data)
+           return flag;
         }
         catch (err) {
+            flag = false
             console.log(err);
             setLoading(false); // error aaya toh
+            return flag
         }
         console.log("login will be here");
     }
