@@ -90,7 +90,7 @@ function AuthProvider({ children }) {
     }
     return (
         < AuthContext.Provider value={value} >
-            {/* if not loading show childrens -> agar loding nhi ho rahi toh children dikha do */}
+            {/* if not loading show childrens -> agar loding nhi ho rahi toh "children" dikha do */}
             {!loading && children}    
         </AuthContext.Provider >
     )
