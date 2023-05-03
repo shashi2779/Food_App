@@ -18,6 +18,7 @@ function Signup(props) {
             console.log("sending request");
             // do signup
             await signUp(name, password, email, confirm);
+            
             // send user to login 
             history.push("/login");
         }

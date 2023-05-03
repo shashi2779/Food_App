@@ -29,7 +29,7 @@ function NavBar() {
                     {user ?
                         <>
                             <li>
-                                <Link to="/profilePage">{user?.name}</Link>
+                                <Link to="/profilePage"> {user?.name} </Link>
                             </li>
                             <li>
                                 <Link to="" onClick={logout}>Logout</Link>

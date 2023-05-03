@@ -16,6 +16,7 @@ function AuthProvider({ children }) {
     
     async function signUp(name, password, email, confirm) {
         try {
+            setLoading(true)
             console.log("signup will be here");
             let res = await axios.post
                 ("/api/v1/auth/signup", {
@@ -24,23 +25,30 @@ function AuthProvider({ children }) {
                     confirmPassword: confirm,
                     email
                 })
+            if(res.status == 400){
+                alert("improper user data entry")
+               
+            }
+            setLoading(false)
             console.log("data", res.data);
 
         } catch (err) {
             console.log("err", err.message);
+            setLoading(false)
         }
     }
    
     async function login(email, password) {
         // return status
         let flag = true
+
         try {
             setLoading(true);
             const res = await axios.post("/api/v1/auth/login", {
                 email: email,
                 password: password
             });
-           
+            
             // checks
             if(res.status == 404){
                 alert("Password or Email may be wrong")
@@ -55,12 +63,13 @@ function AuthProvider({ children }) {
                 userSet(res.data.user);
             }
             setLoading(false);
-           // console.log("40",res.data)
+           console.log("rtgrwtyw",res.data)
            return flag;
         }
         catch (err) {
             flag = false
-            console.log(err);
+            console.log(err.message);
+            alert("Password or email may be wrong");
             setLoading(false); // error aaya toh
             return flag
         }

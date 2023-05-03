@@ -17,13 +17,14 @@ function Login() {
 
     const handleLogin = async () => {
         try {
-            // console.log(email,password)
+            console.log(email,password)
            let flag = await login(email, password)
            console.log("flag",flag)
-           if(flag)
+           if(flag){
              history.push("/")
+           }
           } catch(err) {
-            console.log(err);
+            console.log(err.message);
           }
     }
 
