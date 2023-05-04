@@ -71,6 +71,12 @@ function AuthProvider({ children }) {
             console.log(err.message);
             alert("Password or email may be wrong");
             setLoading(false); // error aaya toh
+            /* `// return flag` is returning a boolean flag that indicates whether the login was
+            successful or not. It is used in the `login` function to check if there was an error
+            during the login process and to handle it accordingly. If there was an error, the flag
+            is set to `false` and the function returns `false`. Otherwise, the flag is set to `true`
+            and the function returns `true`. This flag can be used by the calling component to
+            determine if the login was successful or not. */
             return flag
         }
         console.log("login will be here");
