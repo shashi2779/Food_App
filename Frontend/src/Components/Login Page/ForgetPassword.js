@@ -3,8 +3,10 @@ import '../Styles/login.css'
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import { useAuth } from '../Context/AuthProvider';
+
 function ForgetPassword() {
     const [email, emailSet] = useState("");
+    //
     const { setResetEmail } = useAuth();
     const history = useHistory();
 
@@ -15,8 +17,11 @@ function ForgetPassword() {
             let res = await axios.patch("/api/v1/auth/forgetPassword", { email });
 
             alert("Mail send to your registerd email ID");
+            // esse kya hoga -> context k pass chali jayegi ye "email" , next page ko de paunga ki "open" hoga ya nhi
+            // mail save kiya 
             setResetEmail(email);
             // send to your restpasswordPage
+            // then otp wale page prr bhej diya
             history.push("/otp");
 
         } catch (err) {

@@ -13,6 +13,13 @@ function AuthProvider({ children }) {
     // const history = useHistory();
     const [user, userSet] = useState("");  // user set hota hai
     const [loading, setLoading] = useState(false); 
+    // resetpassword karne ja rhe tab -> otp,email ki jarurat hogi
+    // set/save email
+    const [resetPassEmail, setResetEmail] = useState(null);
+    // set/save otp
+    const [otpPassEmail, setOtpPassEmail] = useState(null);
+
+
     
     async function signUp(name, password, email, confirm) {
         try {
@@ -92,7 +99,11 @@ function AuthProvider({ children }) {
         user,
         login,
         signUp,
-        logout
+        logout,
+        resetPassEmail,
+        setResetEmail,
+        otpPassEmail,
+        setOtpPassEmail
     }
     return (
         < AuthContext.Provider value={value} >
