@@ -17,8 +17,9 @@ function ForgetPassword() {
             let res = await axios.patch("/api/v1/auth/forgetPassword", { email });
 
             alert("Mail send to your registerd email ID");
-            // esse kya hoga -> context k pass chali jayegi ye "email" , next page ko de paunga ki "open" hoga ya nhi
+            // esse kya hoga -> context[AuthProvider] k pass chali jayegi ye "email" --> next page ko de paunga ki "open" hoga ya nhi
             // mail save kiya 
+            // forget password karte wakt email managa wahi diye , ye global store me save hoga , phir wha se otp page me jayea aur check karega yehi email hai toh otp page open hoga
             setResetEmail(email);
             // send to your restpasswordPage
             // then otp wale page prr bhej diya

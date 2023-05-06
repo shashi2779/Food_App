@@ -13,10 +13,10 @@ function AuthProvider({ children }) {
     // const history = useHistory();
     const [user, userSet] = useState("");  // user set hota hai
     const [loading, setLoading] = useState(false); 
+    
     // resetpassword karne ja rhe tab -> otp,email ki jarurat hogi
-    // set/save email
+    // eamil,otp globally save karr liye
     const [resetPassEmail, setResetEmail] = useState(null);
-    // set/save otp
     const [otpPassEmail, setOtpPassEmail] = useState(null);
 
 

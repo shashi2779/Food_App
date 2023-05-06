@@ -11,7 +11,7 @@ function OTP() {
     const { resetPassEmail, setOtpPassEmail } = useAuth();
     
     const saveOTP = async () => {
-        setOtpPassEmail(otp); // otp set kiye 
+        setOtpPassEmail(otp); // otp set/put kiye ==> ye setOtpPassEmail[ otp ] "PasswordReset" page me ja kar "otp" me set krr denge
         // send to password and confirm password page => yha se send kiye password,conform-password page par 
         history.push("/passwordReset")
         
@@ -19,6 +19,7 @@ function OTP() {
    
    return (<>
         {
+            // forget password se jo email bheja maine global store me save huaa , ye wahi eamil hai , check krr rhe agar email null nhi hai toh ye page open karo
             resetPassEmail != null ?
                 <div className="container-grey">
                     <div className="form-container">

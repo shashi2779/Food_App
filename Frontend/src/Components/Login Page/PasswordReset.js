@@ -7,6 +7,7 @@ import { useAuth } from '../Context/AuthProvider';
 import { useHistory } from "react-router-dom";
 
 function PasswordReset() {
+    // password aur conformPassword set karne k liye "state" liye
     const [password, passwordSet] = useState("");
     const [passwordCnf, passwordCnfSet] = useState("");
     const { resetPassEmail, setResetEmail, otpPassEmail, setOtpPassEmail } = useAuth();
@@ -22,6 +23,7 @@ function PasswordReset() {
         try {
             // backend me - resetPassword kya kya leta hai -> otp, password, confirmPassword, email
             let res = await axios.patch("/api/v1/auth/resetPassword", {
+                // sab otp,email,password,conformPassword set krr diye [jo global se bhi email,otp aayi thi ]
                 otp: otpPassEmail,
                 email: resetPassEmail,
                 password: password,
